@@ -1,70 +1,38 @@
-# Getting Started with Create React App
+# Movie app 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Hello and welcome
 
-## Available Scripts
+Thanks for taking time and participating in this great repo, where we will try to collaborate and parctice our Javascript and React skills,
+that I am sure will be of great value for all of us.
+Now before we begin please take a time a go through list of prerequisites needed to run this project successfully.
 
-In the project directory, you can run:
+## Clone the repo
 
-### `npm start`
+We would consider that you have setup your cli enviroment to successfuly clone project. If not please follow [this link](https://docs.github.com/en/get-started/quickstart/set-up-git).
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+ 1. Please type in following command in your cli:
+    
+    ``` git clone git@github.com:Magnificent-12/movie-app.git```
+2. Navigate to ***movie app folder/directory***
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+3. Please make sure that you have NodeJS installed and Node package manager (npm or yarn). **NPM is recommended**. If however you haven't got Node js on your system, please [follow](https://nodejs.org/en/) in order to install NodeJS. Please note that you should always go for the version with the label of **LTS(long term stable)**.
+To check if you have NodeJS and packege manager installed, please run following commands in cli:
 
-### `npm test`
+    **For NodeJS**
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+    ```node -v```
 
-### `npm run build`
+    **For package manager**
+    
+    ```npm -v``` or ```yarn -v```  depending on your package manager preferances. 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+    After confiring all tools necessery are in place, please run following command to insatll needed dependancies:
+    
+    ```npm i``` or ``npm install`` or ``yarn install``
+4. Next step is to run project which will require us to run one more command and we are good to go. Please run:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+    ```npm start``` or ```yarn start``` to start project. It will take some time (up to few minutes), after your developing enviroment would runn successfully and of course 
+    
+    # Happy Coding :) 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+**If you have any questions please feel free to reach out Majra, Emir or Zlaja on Slack.**
