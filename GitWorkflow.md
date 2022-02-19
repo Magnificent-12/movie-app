@@ -1,4 +1,4 @@
-# Hi there againg :) 
+# Hi there again :) 
 Since you reach this page you are ready to start contributing on this project. Here are some instructions and heads up how to do that.
 
 1. ### Please please please 
@@ -56,5 +56,7 @@ Since you reach this page you are ready to start contributing on this project. H
 
 
 # Thanks and Happy coding.
+
+# Note this process will be reviewed and possibly siwtched to Visual Studio Code git client.
 
 **If you have any questions or doubts, please feel free to reach Majra or Zlatan on Slack.**
