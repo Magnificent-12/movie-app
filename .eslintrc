@@ -1,64 +1,32 @@
 {
-    "extends": [
-      "react-app",
-      "prettier"
-    ],
-    "rules": {
-      "import/prefer-default-export": [
-        "off"
-      ],
-      "object-curly-spacing": [
-        "error",
-        "never"
-      ],
-      "react/prop-types": [
-        "off"
-      ],
-      "react/jsx-closing-tag-location": [
-        "off"
-      ],
-      "react/destructuring-assignment": [
-        "off"
-      ],
-      "no-plusplus": [
-        "off"
-      ],
-      "react/jsx-props-no-spreading": [
-        "off"
-      ],
-      "react/jsx-wrap-multilines": [
-        "off"
-      ],
-      "react/jsx-one-expression-per-line": [
-        "off"
-      ],
-      "no-param-reassign": [
-        "off"
-      ],
-      "no-underscore-dangle": [
-        "off"
-      ],
-      "class-methods-use-this": [
-        "off"
-      ],
-      "no-console": [
-        "error"
-      ],
-      "quotes": [
-        "error",
-        "single",
-        {
-          "avoidEscape": true,
-          "allowTemplateLiterals": false
-        }
-      ]
-    },
-    "overrides": [
+  "extends": ["react-app", "prettier"],
+  "rules": {
+    "import/prefer-default-export": ["off"],
+    "object-curly-spacing": ["error", "never"],
+    "react/prop-types": ["off"],
+    "react/jsx-closing-tag-location": ["off"],
+    "react/destructuring-assignment": ["off"],
+    "no-plusplus": ["off"],
+    "react/jsx-props-no-spreading": ["off"],
+    "react/jsx-wrap-multilines": ["off"],
+    "react/jsx-one-expression-per-line": ["off"],
+    "no-param-reassign": ["off"],
+    "no-underscore-dangle": ["off"],
+    "class-methods-use-this": ["off"],
+    "no-console": ["error"],
+    "quotes": [
+      "error",
+      "single",
       {
-        "files": [
-          "**/*.js?(x)"
-        ],
-        "rules": {}
+        "avoidEscape": true,
+        "allowTemplateLiterals": false
       }
     ]
-  }
+  },
+  "overrides": [
+    {
+      "files": ["**/*.js?(x)"],
+      "rules": {}
+    }
+  ]
+}
