@@ -28,6 +28,7 @@
     "lint:check": "eslint --fix .",
     "prettier:check": "prettier --check .",
     "prettier:fix": "prettier --write .",
+    "css:lint": "stylelint \"**/*.css\"",
     "prepare": "husky install"
   },
   "eslintConfig": {
@@ -49,6 +50,9 @@
     ]
   },
   "devDependencies": {
-    "husky": "^7.0.4"
+    "husky": "^7.0.4",
+    "stylelint": "^14.5.1",
+    "stylelint-config-prettier": "^9.0.3",
+    "stylelint-config-standard": "^25.0.0"
   }
 }
