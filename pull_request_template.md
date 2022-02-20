@@ -4,6 +4,10 @@ Please include a summary of the change for the appropriate task.
 
 Task # (task link)
 
+## Screenshots
+
+Please add any relevant screenshots/screencaptures
+
 ## Type of change
 
 Please delete options that are not relevant.
