@@ -35,4 +35,4 @@ To check if you have NodeJS and packege manager installed, please run following 
     
     # Happy Coding :) 
 
-**If you have any questions please feel free to reach out Majra, Emir or Zlaja on Slack.**
+**If you have any questions please feel free to reach out Majra, Amer or Zlaja on Slack.**
