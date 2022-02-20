@@ -50,10 +50,14 @@ Since you reach this page you are ready to start contributing on this project. H
     
         Congratulations, that would be all that you need to do locally.
 
-5. ### Now the remote part
+5. ### Pre commit hook
+
+    To ensure we keep same code standards, we have added husky/pre commit  hooks. Before you are going to be able to commit any code, husky will run common checks and prevent commint if any error found. If you encounter such case, please follow cli output and fix menitioned errors.
+
+6. ### Now the remote part
     
     Please go the [repo](https://github.com/Magnificent-12/movie-app) on github, where you should see a button called       **Pull Request**, please click on it and make your pr. Your code will be reviewed and mereged it the code meets all criteria.
-
+    
 
 # Thanks and Happy coding.
 
