@@ -1,16 +1,16 @@
 import './App.css';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
-import Login from './components/Login';
-import Logout from './components/Logout';
-import GenreComedy from './components/GenreComedy';
-import GenreAction from './components/GenreAction';
-import GenreDrama from './components/GenreDrama';
-import GenreHorror from './components/GenreHorror';
-import GenreFantasy from './components/GenreFantasy';
-import GenreMystery from './components/GenreMystery';
-import GenreRomance from './components/GenreRomance';
-import GenreTrailer from './components/GenreTrailer';
-import Favorites from './components/Favorites';
+import Login from './Pages/Login';
+import Logout from './Pages/Logout';
+import GenreComedy from './Pages/GenreComedy';
+import GenreAction from './Pages/GenreAction';
+import GenreDrama from './Pages/GenreDrama';
+import GenreHorror from './Pages/GenreHorror';
+import GenreFantasy from './Pages/GenreFantasy';
+import GenreMystery from './Pages/GenreMystery';
+import GenreRomance from './Pages/GenreRomance';
+import GenreTrailer from './Pages/GenreTrailer';
+import Favorites from './Pages/Favorites';
 function App() {
   return (
     <Router>
