@@ -1,7 +1,5 @@
 const GenreTrailer = () => {
-    return (
-        <p>This is the trailer category page</p>
-    );
+  return <p>This is the trailer category page</p>;
 };
 
 export default GenreTrailer;

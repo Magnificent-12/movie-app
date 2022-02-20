@@ -15,23 +15,22 @@ function App() {
   return (
     <Router>
       <div className="App">
-      {/* 
+        {/* TODO Navbar
         <Navbar/>
       */}
-          <Routes>
-             <Route path='/login' element={<Login/>}/>
-             <Route path='/logout' element={<Logout/>}/>
-             <Route path='/genre/comedy' element={<GenreComedy/>}/>
-             <Route path='/genre/action' element={<GenreAction/>}/>
-             <Route path='/genre/drama' element={<GenreDrama/>}/>
-             <Route path='/genre/horror' element={<GenreHorror/>}/>
-             <Route path='/genre/fantasy' element={<GenreFantasy/>}/>
-             <Route path='/genre/mystery' element={<GenreMystery/>}/>
-             <Route path='/genre/romance' element={<GenreRomance/>}/>
-             <Route path='/genre/trailer' element={<GenreTrailer/>}/>
-             <Route path='/favorites' element={<Favorites/>}/>
-
-          </Routes>
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/logout" element={<Logout />} />
+          <Route path="/genre/comedy" element={<GenreComedy />} />
+          <Route path="/genre/action" element={<GenreAction />} />
+          <Route path="/genre/drama" element={<GenreDrama />} />
+          <Route path="/genre/horror" element={<GenreHorror />} />
+          <Route path="/genre/fantasy" element={<GenreFantasy />} />
+          <Route path="/genre/mystery" element={<GenreMystery />} />
+          <Route path="/genre/romance" element={<GenreRomance />} />
+          <Route path="/genre/trailer" element={<GenreTrailer />} />
+          <Route path="/favorites" element={<Favorites />} />
+        </Routes>
       </div>
     </Router>
   );

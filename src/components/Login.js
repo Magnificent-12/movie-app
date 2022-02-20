@@ -1,7 +1,5 @@
 const Login = () => {
-    return (
-        <p>Welcome to the login page</p>
-    );
-}
+  return <p>Welcome to the login page</p>;
+};
 
 export default Login;
