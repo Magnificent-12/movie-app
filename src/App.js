@@ -4,6 +4,8 @@ import Login from './Pages/Login';
 import Logout from './Pages/Logout';
 import {Genre} from './Pages/Genre';
 import Favorites from './Pages/Favorites';
+//import {SearchBar} from './components/SearchBar';
+import {Home} from './Pages/Home';
 function App() {
   return (
     <Router>
@@ -11,11 +13,13 @@ function App() {
         {/* TODO Navbar
         <Navbar/>
       */}
+        {/*<SearchBar/>*/}
         <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/logout" element={<Logout />} />
-          <Route path="/genre/:genre" element={<Genre />} />
-          <Route path="/favorites" element={<Favorites />} />
+          <Route path="/" element={<Home />} />
+          <Route path="login" element={<Login />} />
+          <Route path="logout" element={<Logout />} />
+          <Route path="genre/:genre" element={<Genre />} />
+          <Route path="favorites" element={<Favorites />} />
         </Routes>
       </div>
     </Router>
