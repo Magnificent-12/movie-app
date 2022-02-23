@@ -1,6 +1,7 @@
 import mockData from '../mockdata.json';
 import {useEffect, useState} from 'react';
 import {useSearchParams} from 'react-router-dom';
+//import {MovieCard} from '../components/MovieCard';
 
 export const Home = () => {
   const [movies, setMovies] = useState();
@@ -22,6 +23,24 @@ export const Home = () => {
     <div>
       {movies?.map((movie) => (
         <p>{movie?.title}</p>
+        /*
+        <MovieCard  
+        movieTitle ={movie.title}
+        movieGenre = {movie.genres.map((genre, index) => {
+          let next = movie.genres[index+1];
+          if(typeof(next) !== 'undefined'){
+            return genre + ', ';
+          }
+          else{
+            return genre;
+          }
+        })}
+        moviePoster = {movie.posterUrl}
+        movieActors = {movie.actors}
+        movieDescription = {movie.plot}
+        
+        />
+        */
       ))}
     </div>
   );
