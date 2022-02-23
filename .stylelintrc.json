@@ -1,3 +1,6 @@
 {
+  "rules": {
+    "declaration-no-important": true
+  },
   "extends": ["stylelint-config-standard", "stylelint-config-prettier"]
 }
