@@ -6,5 +6,4 @@ const userStore = createSlice({
   reducers: {
   },
 });
-export const {addMovies} = movies.actions;
 export default userStore.reducer;
