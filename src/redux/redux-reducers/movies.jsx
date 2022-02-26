@@ -2,7 +2,7 @@ import {createSlice} from '@reduxjs/toolkit';
 //reducer for all movies
 const movies = createSlice({
   name: 'movies',
-  initialState,
+  initialState: [],
   reducers: {
     addMovies(state, action) {
       state = action.payload;
