@@ -8,7 +8,6 @@ export const Genre = () => {
   const [searchParams] = useSearchParams();
   //First letter has to be capital to match
   const modifiedGenreString = genre[0].toUpperCase() + genre.slice(1);
-
   const [movies, setMovies] = useState();
 
   useEffect(() => {

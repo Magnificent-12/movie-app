@@ -14,7 +14,7 @@ import {ExpandMore} from '../Helper_components/ExpandMore';
 export const MovieCard = (props) => {
   const [expanded, setExpanded] = useState(false);
   const [favorite, setFavorite] = useState(props.movieFavorite);
-  const color = favorite ? 'red' : 'black';
+  const color = favorite ? 'red' : 'rgba(188, 184, 177, .4)';
 
   const handleFavoriteClick = () => {
     setFavorite(!favorite);
