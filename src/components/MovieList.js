@@ -6,6 +6,8 @@ const MovieList = (props) => {
   const [movies, setMovies] = useState([]);
   const searchedGenre = props.genre === '' ? undefined : props.genre[0].toUpperCase() + props.genre.slice(1);
   const searchedMovies = props.moviesSearched;
+  const getGenres = (genres) => genres.join(', ');
+
   useEffect(() => {
     if (typeof searchedGenre === 'undefined') {
       if (searchedMovies === null) {
@@ -31,17 +33,11 @@ const MovieList = (props) => {
       {movies?.map((movie) => (
         <MovieCard
           movieTitle={movie.title}
-          movieGenre={movie.genres.map((genre, index) => {
-            let next = movie.genres[index + 1];
-            if (typeof next !== 'undefined') {
-              return genre + ', ';
-            } else {
-              return genre;
-            }
-          })}
+          movieGenre={getGenres(movie.genres)}
           moviePoster={movie.posterUrl}
           movieActors={movie.actors}
           movieDescription={movie.plot}
+          /*TODO add to favorites*/
           movieFavorite={false}
         />
       ))}
