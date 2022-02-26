@@ -4,7 +4,7 @@ import Login from './Pages/Login';
 import Logout from './Pages/Logout';
 import {Genre} from './Pages/Genre';
 import Favorites from './Pages/Favorites';
-//import {SearchBar} from './components/SearchBar';
+import {SearchBar} from './components/SearchBar';
 import {Home} from './Pages/Home';
 function App() {
   return (
@@ -13,7 +13,7 @@ function App() {
         {/* TODO Navbar
         <Navbar/>
       */}
-        {/*<SearchBar/>*/}
+        <SearchBar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="login" element={<Login />} />

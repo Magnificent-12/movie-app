@@ -1,5 +1,6 @@
 import {useEffect, useState} from 'react';
 import {useParams, useSearchParams} from 'react-router-dom';
+import {MovieCard} from '../components/MovieCard';
 import mockData from '../mockdata.json';
 
 export const Genre = () => {
@@ -26,14 +27,23 @@ export const Genre = () => {
 
   return (
     <div>
-      {/*TODO MovieCard instead of <p>*/}
-      {movies?.map((movie) => {
-        return (
-          <p>
-            {movie?.title} {movie?.genres}
-          </p>
-        );
-      })}
+      {movies?.map((movie) => (
+        <MovieCard
+          movieTitle={movie.title}
+          movieGenre={movie.genres.map((genre, index) => {
+            let next = movie.genres[index + 1];
+            if (typeof next !== 'undefined') {
+              return genre + ', ';
+            } else {
+              return genre;
+            }
+          })}
+          moviePoster={movie.posterUrl}
+          movieActors={movie.actors}
+          movieDescription={movie.plot}
+          movieFavorite={false}
+        />
+      ))}
     </div>
   );
 };
