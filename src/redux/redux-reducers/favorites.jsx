@@ -11,5 +11,5 @@ const favorites = createSlice({
     },
   },
 });
-export const {addFavorites} = movies.actions;
+export const {addFavorites} = favorites.actions;
 export default favorites.reducer;
