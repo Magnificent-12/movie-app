@@ -13,12 +13,8 @@ import {ExpandMore} from '../Helper_components/ExpandMore';
 
 export const MovieCard = (props) => {
   const [expanded, setExpanded] = useState(false);
-  const [favorite, setFavorite] = useState(props.movieFavorite);
-  const color = favorite ? 'red' : 'black';
+  const color = props.movieFavorite ? 'red' : 'black';
 
-  const handleFavoriteClick = () => {
-    setFavorite(!favorite);
-  };
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
@@ -33,11 +29,11 @@ export const MovieCard = (props) => {
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites" onClick={handleFavoriteClick}>
+        <IconButton aria-label="add to favorites" onClick={() => props.handleFavorites(props.movieTitle)}>
           <FavoriteIcon
             sx={{
               color: color,
-              transition: '0.4s',
+              transition: '1s',
             }}
           />
         </IconButton>
