@@ -39,7 +39,7 @@ export const SearchBar = () => {
         onChange={(e) => setValue(e.target.value)}
         onKeyPress={handleKeyPress}
         variant="outlined"
-        sx={{'& .MuiInputLabel-root': {color: 'white'}, '& fieldset': {borderColor: 'white'}}}
+        sx={{'& .MuiInputLabel-root': {color: 'white'}, '& fieldset': {borderColor: 'white'}, '& input': {color: 'white'}}}
       />
       <IconButton>
         <SearchIcon onClick={search} fontSize="large" sx={{color: 'white'}} />
