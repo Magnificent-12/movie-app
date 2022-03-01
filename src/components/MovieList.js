@@ -18,7 +18,6 @@ const MovieList = (props) => {
   const searchedGenre = props.genre === '' ? undefined : props.genre[0].toUpperCase() + props.genre.slice(1);
   const searchedMovies = props.moviesSearched;
   const getGenres = (genres) => genres.join(', ');
-
   //handles favorite click
   const handleAddToFavorites = (movie) => {
     if (favorites.includes(movie)) {
@@ -56,10 +55,11 @@ const MovieList = (props) => {
     localStorage.setItem('movies', JSON.stringify(favorites));
   }, [favorites]);
   return (
-    <div>
+    <div className="movie-list">
       {movies?.map((movie) => (
         <MovieCard
           movieTitle={movie.title}
+          movieYear={movie.year}
           movieGenre={getGenres(movie.genres)}
           moviePoster={movie.posterUrl}
           movieActors={movie.actors}

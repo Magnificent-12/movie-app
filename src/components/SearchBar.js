@@ -2,6 +2,7 @@ import TextField from '@mui/material/TextField';
 import {useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 import SearchIcon from '@mui/icons-material/Search';
+import {IconButton} from '@mui/material';
 
 export const SearchBar = () => {
   const navigate = useNavigate();
@@ -29,16 +30,20 @@ export const SearchBar = () => {
     }
   };
   return (
-    <div>
+    <div style={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
       <TextField
-        id="outlined-search"
+        size="small"
         label="Search"
         type="search"
         value={value}
         onChange={(e) => setValue(e.target.value)}
         onKeyPress={handleKeyPress}
+        variant="outlined"
+        sx={{'& .MuiInputLabel-root': {color: 'white'}, '& fieldset': {borderColor: 'white'}}}
       />
-      <SearchIcon onClick={search} fontSize="large" />
+      <IconButton>
+        <SearchIcon onClick={search} fontSize="large" sx={{color: 'white'}} />
+      </IconButton>
     </div>
   );
 };

@@ -4,16 +4,13 @@ import Login from './Pages/Login';
 import Logout from './Pages/Logout';
 import {Genre} from './Pages/Genre';
 import Favorites from './Pages/Favorites';
-import {SearchBar} from './components/SearchBar';
 import {Home} from './Pages/Home';
+import {NavBar} from './components/NavBar';
 function App() {
   return (
     <Router>
       <div className="App">
-        {/* TODO Navbar
-        <Navbar/>
-      */}
-        <SearchBar />
+        <NavBar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="login" element={<Login />} />
