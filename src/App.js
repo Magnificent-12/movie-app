@@ -6,7 +6,16 @@ import {Genre} from './Pages/Genre';
 import Favorites from './Pages/Favorites';
 import {SearchBar} from './components/SearchBar';
 import {Home} from './Pages/Home';
+import {useDispatch} from 'react-redux';
+import {getMovies} from './redux/redux-reducers/movies';
+import {useEffect} from 'react';
+
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getMovies());
+  }, [dispatch]);
   return (
     <Router>
       <div className="App">
