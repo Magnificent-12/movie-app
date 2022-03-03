@@ -11,7 +11,7 @@ export const Home = () => {
   useEffect(() => {}, [movies]);
   const [searchParams] = useSearchParams();
   //check if we have information.When we dont have, Loader comp will be rendered
-  return movies.status == 'resolved' ? (
+  return movies.status === 'resolved' ? (
     <div>
       <MovieList genre="" moviesSearched={searchParams.get('movie_title')} />
     </div>
