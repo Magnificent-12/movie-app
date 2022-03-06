@@ -4,7 +4,12 @@ import favorites from '../redux-reducers/favorites';
 import movies from '../redux-reducers/movies';
 //making a store
 const store = configureStore({
-  userStore: userStore,
-  favorites: favorites,
-  movies: movies,
+  reducer: {
+    userStore: userStore,
+    favorites: favorites,
+    movies: movies,
+  },
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware({}),
 });
+
+export default store;
