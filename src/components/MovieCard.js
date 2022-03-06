@@ -13,15 +13,26 @@ import {ExpandMore} from '../Helper_components/ExpandMore';
 
 export const MovieCard = (props) => {
   const [expanded, setExpanded] = useState(false);
+  const [poster, setPoster] = useState(props.moviePoster);
   const color = props.movieFavorite ? 'red' : 'black';
-
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
   return (
     <Card sx={{maxWidth: 345, margin: '1px'}}>
-      <CardHeader title={props.movieTitle} subheader={props.movieGenre} sx={{height: '70px', alignItems: 'start', marginBottom: '20px'}} />
-      <CardMedia component="img" height="300" image={props.moviePoster} alt={props.movieTitle} sx={{objectFit: 'contain'}} />
+      <CardHeader
+        title={props.movieTitle + ' ' + props.movieYear}
+        subheader={props.movieGenre}
+        sx={{height: '70px', alignItems: 'start', marginBottom: '20px'}}
+      />
+      <CardMedia
+        onError={() => setPoster('https://applified.in/jalaram-marketing/admin_crm/img/noimg.jpg')}
+        component="img"
+        height="300"
+        image={poster}
+        alt={props.movieTitle}
+        sx={{objectFit: 'contain'}}
+      />
       <CardContent sx={{height: '50px'}}>
         <Typography variant="body2" color="text.secondary">
           {props.movieActors}
