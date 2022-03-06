@@ -18,12 +18,11 @@ export const MovieCard = (props) => {
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
-
   return (
-    <Card sx={{maxWidth: 345, margin: '20px'}}>
-      <CardHeader title={props.movieTitle} subheader={props.movieGenre} />
-      <CardMedia component="img" height="194" image={props.moviePoster} alt={props.movieTitle} />
-      <CardContent>
+    <Card sx={{maxWidth: 345, margin: '1px'}}>
+      <CardHeader title={props.movieTitle} subheader={props.movieGenre} sx={{height: '70px', alignItems: 'start', marginBottom: '20px'}} />
+      <CardMedia component="img" height="300" image={props.moviePoster} alt={props.movieTitle} sx={{objectFit: 'contain'}} />
+      <CardContent sx={{height: '50px'}}>
         <Typography variant="body2" color="text.secondary">
           {props.movieActors}
         </Typography>
