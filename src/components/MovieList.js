@@ -1,10 +1,11 @@
 import {useState, useEffect} from 'react';
 import mockdata from '../mockdata.json';
 import {MovieCard} from './MovieCard';
+import {Sort} from './Sort';
 
 const MovieList = (props) => {
   const [movies, setMovies] = useState([]);
-
+  const [sortString, setSortString] = useState('');
   //used for setting favorite movies, if localstorage is empty returns and empty array
   const [favorites, setFavorites] = useState(() => {
     //TODO userEmail instead of movies
@@ -17,7 +18,11 @@ const MovieList = (props) => {
   });
   const searchedGenre = props.genre === '' ? undefined : props.genre[0].toUpperCase() + props.genre.slice(1);
   const searchedMovies = props.moviesSearched;
+
   const getGenres = (genres) => genres.join(', ');
+  const handleSort = (value) => {
+    setSortString(value);
+  };
   //handles favorite click
   const handleAddToFavorites = (movie) => {
     if (favorites.includes(movie)) {
@@ -26,11 +31,23 @@ const MovieList = (props) => {
       setFavorites([movie, ...favorites]);
     }
   };
-
+  const sortArray = (sortString, arrayToSort) => {
+    if (sortString === 'nameasc') {
+      arrayToSort.sort((a, b) => (a.title > b.title ? 1 : -1));
+    } else if (sortString === 'namedesc') {
+      arrayToSort.sort((a, b) => (a.title < b.title ? 1 : -1));
+    } else if (sortString === 'yearasc') {
+      arrayToSort.sort((a, b) => (a.year > b.year ? 1 : -1));
+    } else if (sortString === 'yeardesc') {
+      arrayToSort.sort((a, b) => (a.year < b.year ? 1 : -1));
+    }
+  };
   //function that handles the logic of cheking if the movie is favorite
   const isFavorite = (movie) => favorites.includes(movie);
 
   useEffect(() => {
+    if (sortString !== '') sortArray(sortString, mockdata.movies);
+
     if (typeof searchedGenre === 'undefined') {
       if (searchedMovies === null) {
         setMovies(mockdata.movies.map((movie) => movie));
@@ -48,26 +65,32 @@ const MovieList = (props) => {
         );
       }
     }
-  }, [searchedGenre, searchedMovies]);
+  }, [searchedGenre, searchedMovies, sortString]);
 
   //sets the localstorage to the current favorites list when the list changes
   useEffect(() => {
     localStorage.setItem('movies', JSON.stringify(favorites));
   }, [favorites]);
+
   return (
-    <div className="movie-list">
-      {movies?.map((movie) => (
-        <MovieCard
-          movieTitle={movie.title}
-          movieYear={movie.year}
-          movieGenre={getGenres(movie.genres)}
-          moviePoster={movie.posterUrl}
-          movieActors={movie.actors}
-          movieDescription={movie.plot}
-          movieFavorite={isFavorite(movie.title)}
-          handleFavorites={handleAddToFavorites}
-        />
-      ))}
+    <div>
+      <div>
+        <Sort handleSort={handleSort} />
+      </div>
+      <div className="movie-list">
+        {movies?.map((movie) => (
+          <MovieCard
+            movieTitle={movie.title}
+            movieYear={movie.year}
+            movieGenre={getGenres(movie.genres)}
+            moviePoster={movie.posterUrl}
+            movieActors={movie.actors}
+            movieDescription={movie.plot}
+            movieFavorite={isFavorite(movie.title)}
+            handleFavorites={handleAddToFavorites}
+          />
+        ))}
+      </div>
     </div>
   );
 };
