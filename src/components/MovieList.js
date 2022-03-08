@@ -54,6 +54,16 @@ const MovieList = (props) => {
       } else {
         setMovies(mockdata.movies.filter((movie) => movie.title.toLowerCase().includes(searchedMovies.toLowerCase())));
       }
+    } else if (searchedGenre === 'Favorites') {
+      if (searchedMovies === null) {
+        setMovies(mockdata.movies.filter((movie) => favorites.includes(movie.title)));
+      } else {
+        setMovies(
+          mockdata.movies.filter(
+            (movie) => favorites.includes(movie.title) && movie.title.toLowerCase().includes(searchedMovies.toLowerCase())
+          )
+        );
+      }
     } else {
       if (searchedMovies === null) {
         setMovies(mockdata.movies.filter((movie) => movie.genres.includes(searchedGenre)));
@@ -65,7 +75,7 @@ const MovieList = (props) => {
         );
       }
     }
-  }, [searchedGenre, searchedMovies, sortString]);
+  }, [searchedGenre, searchedMovies, sortString, favorites]);
 
   //sets the localstorage to the current favorites list when the list changes
   useEffect(() => {

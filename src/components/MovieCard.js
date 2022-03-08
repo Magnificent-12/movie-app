@@ -43,7 +43,7 @@ export const MovieCard = (props) => {
           <FavoriteIcon
             sx={{
               color: color,
-              transition: '1s',
+              transition: '0.4s',
             }}
           />
         </IconButton>
