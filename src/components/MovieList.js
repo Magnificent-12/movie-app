@@ -1,15 +1,18 @@
 import {useState, useEffect} from 'react';
+import {useSelector} from 'react-redux';
 import mockdata from '../mockdata.json';
 import {MovieCard} from './MovieCard';
 import {Sort} from './Sort';
 
 const MovieList = (props) => {
+  const loggedIn = useSelector((state) => state.userStore.loggedIn);
+  const user = useSelector((state) => state.userStore.email);
   const [movies, setMovies] = useState([]);
   const [sortString, setSortString] = useState('');
   //used for setting favorite movies, if localstorage is empty returns and empty array
   const [favorites, setFavorites] = useState(() => {
-    //TODO userEmail instead of movies
-    const data = localStorage.getItem('movies');
+    //getting favorites by user email
+    const data = localStorage.getItem(JSON.stringify(user));
     if (data) {
       return JSON.parse(data);
     } else {
@@ -25,10 +28,15 @@ const MovieList = (props) => {
   };
   //handles favorite click
   const handleAddToFavorites = (movie) => {
-    if (favorites.includes(movie)) {
-      setFavorites(favorites.filter((prevMovie) => prevMovie !== movie));
+    //only allow adding to favorites if the user is logged in
+    if (loggedIn) {
+      if (favorites.includes(movie)) {
+        setFavorites(favorites.filter((prevMovie) => prevMovie !== movie));
+      } else {
+        setFavorites([movie, ...favorites]);
+      }
     } else {
-      setFavorites([movie, ...favorites]);
+      alert('You have to be logged in to add to favorites');
     }
   };
   const sortArray = (sortString, arrayToSort) => {
@@ -69,8 +77,9 @@ const MovieList = (props) => {
 
   //sets the localstorage to the current favorites list when the list changes
   useEffect(() => {
-    localStorage.setItem('movies', JSON.stringify(favorites));
-  }, [favorites]);
+    //Setting user email as the key for favorites
+    if (loggedIn) localStorage.setItem(JSON.stringify(user), JSON.stringify(favorites));
+  }, [favorites, user, loggedIn]);
 
   return (
     <div>

@@ -9,7 +9,7 @@ export const Sort = (props) => {
   };
   return (
     <Box sx={{minWidth: 150, display: 'flex', flexDirection: 'row', justifyContent: 'center', pb: '20px'}}>
-      <FormControl sx={{width: '10%', mr: '20px'}}>
+      <FormControl sx={{width: '120px', mr: '20px'}}>
         <InputLabel id="demo-simple-select-label">Sort by</InputLabel>
         <Select labelId="demo-simple-select-label" id="demo-simple-select" value={value} label="Sort by" onChange={handleChange}>
           <MenuItem value={'nameasc'}>name(asc)</MenuItem>
