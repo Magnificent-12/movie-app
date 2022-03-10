@@ -11,7 +11,7 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ListItem from '@mui/material/ListItem';
-import {useState} from 'react';
+import {useEffect, useRef, useState} from 'react';
 import {DrawerHeader} from '../Helper_components/DrawerHeader';
 import {AppBar} from '../Helper_components/AppBar';
 import {SearchBar} from './SearchBar';
@@ -21,13 +21,39 @@ import {useSelector} from 'react-redux';
 export const NavBar = () => {
   const [open, setOpen] = useState(false);
   const user = useSelector((state) => state.userStore);
+  const [posy, setPosY] = useState(0);
+  const [windowY, setWindowY] = useState(0);
+  const navBar = useRef(null);
+
+  useEffect(() => {
+    //handling the scroll position
+    const handleScroll = () => {
+      setWindowY(window.scrollY);
+      if (navBar.current !== null && posy < windowY && posy > 800) {
+        setPosY(windowY);
+        //adding the class which hides the navbar during scroll down
+        navBar.current.classList.add('navbar-hide');
+        navBar.current.classList.remove('navbar-show');
+      } else {
+        setPosY(windowY);
+        navBar.current.classList.remove('navbar-hide');
+        //adding the class which shows the navbar during scroll up
+        navBar.current.classList.add('navbar-show');
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [posy, windowY]);
   const handleDrawerOpen = () => {
     setOpen(true);
   };
-
   const handleDrawerClose = () => {
     setOpen(false);
   };
+
   const genreList = [
     'Comedy',
     'Fantasy',
@@ -52,8 +78,9 @@ export const NavBar = () => {
     'Sport',
   ].sort();
   return (
-    <Box sx={{display: 'flex', pb: '100px'}}>
+    <Box sx={{display: 'flex'}}>
       <AppBar
+        ref={navBar}
         position="fixed"
         open={open}
         sx={{
@@ -66,6 +93,7 @@ export const NavBar = () => {
           justifyContent: 'space-around',
           backgroundColor: 'rgb(19, 21, 19)',
         }}
+        className="navbar-show"
       >
         <div>
           <IconButton color="inherit" aria-label="open drawer" onClick={handleDrawerOpen} edge="start">

@@ -1,18 +1,20 @@
 import {Box, Button, TextField, Typography} from '@mui/material';
 import {useState} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
-import {Navigate} from 'react-router-dom';
+import {useDispatch} from 'react-redux';
+import {useNavigate} from 'react-router-dom';
 import {addUser} from '../redux/redux-reducers/userstore';
 
 const Login = () => {
-  const loggedIn = useSelector((state) => state.userStore.loggedIn);
   const dispatch = useDispatch();
   const [email, setEmail] = useState('');
+  const navigate = useNavigate();
   const handleClick = () => {
     //checking if it's an email
     if (email.includes('@')) {
       dispatch(addUser(email));
-      window.location.reload();
+      navigate({
+        pathname: '/',
+      });
     } else {
       alert('Please enter a valid e-mail');
     }
@@ -25,7 +27,7 @@ const Login = () => {
       handleClick();
     }
   };
-  return !loggedIn ? (
+  return (
     <Box
       sx={{
         position: 'absolute',
@@ -41,7 +43,7 @@ const Login = () => {
         justifyContent: 'center',
       }}
     >
-      <Typography variant="h4" sx={{marginBottom: '20px', color: 'white'}}>
+      <Typography variant="h4" sx={{marginBottom: '30px', color: 'white'}}>
         Please log in
       </Typography>
       <TextField
@@ -50,15 +52,13 @@ const Login = () => {
         value={email}
         onChange={handleChange}
         onKeyPress={handleKeyPress}
-        variant="outlined"
+        variant="filled"
         sx={{width: '60%', '& .MuiInputLabel-root': {color: 'white'}, '& fieldset': {borderColor: 'white'}, '& input': {color: 'white'}}}
       />
-      <Button variant="contained" size="medium" sx={{width: '60%', marginTop: '10px'}} onClick={handleClick}>
+      <Button variant="contained" size="medium" sx={{width: '60%', marginTop: '30px'}} onClick={handleClick}>
         Log in
       </Button>
     </Box>
-  ) : (
-    <Navigate to={'/'} />
   );
 };
 

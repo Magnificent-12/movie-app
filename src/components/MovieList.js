@@ -87,17 +87,20 @@ const MovieList = (props) => {
         <Sort handleSort={handleSort} />
       </div>
       <div className="movie-list">
-        {movies?.map((movie) => (
-          <MovieCard
-            movieTitle={movie.title}
-            movieYear={movie.year}
-            movieGenre={getGenres(movie.genres)}
-            moviePoster={movie.posterUrl}
-            movieActors={movie.actors}
-            movieDescription={movie.plot}
-            movieFavorite={isFavorite(movie.title)}
-            handleFavorites={handleAddToFavorites}
-          />
+        {movies?.map((movie, index) => (
+          //handles the slow loading of a list
+          <div style={{animationDelay: index < 24 ? index * 0.02 + 's' : 0.02}} className="slow-load">
+            <MovieCard
+              movieTitle={movie.title}
+              movieYear={movie.year}
+              movieGenre={getGenres(movie.genres)}
+              moviePoster={movie.posterUrl}
+              movieActors={movie.actors}
+              movieDescription={movie.plot}
+              movieFavorite={isFavorite(movie.title)}
+              handleFavorites={handleAddToFavorites}
+            />
+          </div>
         ))}
       </div>
     </div>
