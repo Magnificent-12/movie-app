@@ -1,4 +1,5 @@
 import LoginIcon from '@mui/icons-material/Login';
+import LogoutIcon from '@mui/icons-material/Logout';
 import HomeIcon from '@mui/icons-material/Home';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import Box from '@mui/material/Box';
@@ -15,10 +16,11 @@ import {DrawerHeader} from '../Helper_components/DrawerHeader';
 import {AppBar} from '../Helper_components/AppBar';
 import {SearchBar} from './SearchBar';
 import {Link} from '@mui/material';
+import {useSelector} from 'react-redux';
 
 export const NavBar = () => {
   const [open, setOpen] = useState(false);
-
+  const user = useSelector((state) => state.userStore);
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -72,22 +74,34 @@ export const NavBar = () => {
         </div>
         <Link href="/" underline="none" sx={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
           <HomeIcon fontSize="medium" sx={{color: 'white', pr: '10px'}} />
-          <Typography variant="h5" color={'white'}>
+          <Typography sx={{fontSize: {sm: '20px', md: '23px', lg: '27px'}}} color={'white'}>
             Home
           </Typography>
         </Link>
         <Link href="/favorites" underline="none" sx={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
           <FavoriteIcon fontSize="medium" sx={{color: 'white', pr: '10px'}} />
-          <Typography variant="h5" color={'white'}>
+          <Typography sx={{fontSize: {sm: '20px', md: '23px', lg: '27px'}}} color={'white'}>
             Favorites
           </Typography>
         </Link>
-        <Link href="/login" underline="none" sx={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
-          <LoginIcon fontSize="medium" sx={{color: 'white', pr: '10px'}} />
-          <Typography variant="h5" color={'white'}>
-            Login
-          </Typography>
-        </Link>
+        {user.loggedIn ? (
+          <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+            <Typography sx={{fontSize: {sm: '17px', md: '19px', lg: '21px'}}}>{user.email}</Typography>
+            <Link href="/logout" underline="none" sx={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
+              <LogoutIcon fontSize="medium" sx={{color: 'white', pr: '10px'}} />
+              <Typography sx={{fontSize: {sm: '17px', md: '19px', lg: '21px'}}} color={'white'}>
+                Logout
+              </Typography>
+            </Link>
+          </div>
+        ) : (
+          <Link href="/login" underline="none" sx={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
+            <LoginIcon fontSize="medium" sx={{color: 'white', pr: '10px'}} />
+            <Typography sx={{fontSize: {sm: '22px', md: '23px', lg: '27px'}}} color={'white'}>
+              Login
+            </Typography>
+          </Link>
+        )}
       </AppBar>
       <Drawer
         sx={{
