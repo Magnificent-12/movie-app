@@ -1,22 +1,23 @@
 import {Box, Button, TextField, Typography} from '@mui/material';
-import {useState} from 'react';
-import {useDispatch} from 'react-redux';
+import {useEffect, useState} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 import {useNavigate} from 'react-router-dom';
+import {toast} from 'react-toastify';
 import {addUser} from '../redux/redux-reducers/userstore';
 
 const Login = () => {
   const dispatch = useDispatch();
+  const userLogged = useSelector((state) => state.userStore.loggedIn);
   const [email, setEmail] = useState('');
   const navigate = useNavigate();
   const handleClick = () => {
     //checking if it's an email
     if (email.includes('@')) {
       dispatch(addUser(email));
-      navigate({
-        pathname: '/',
-      });
     } else {
-      alert('Please enter a valid e-mail');
+      toast.error('Please enter a valid e-mail', {
+        theme: 'colored',
+      });
     }
   };
   const handleChange = (e) => {
@@ -27,6 +28,24 @@ const Login = () => {
       handleClick();
     }
   };
+
+  useEffect(() => {
+    if (userLogged) {
+      const loginWait = new Promise((resolve) => {
+        setTimeout(() => {
+          resolve();
+          navigate({
+            pathname: '/',
+          });
+        }, 1500);
+      });
+      toast.promise(loginWait, {
+        pending: 'Logging in!',
+        success: 'You have been logged in!',
+        error: 'There has been an error while logging in',
+      });
+    }
+  }, [navigate, userLogged]);
   return (
     <Box
       sx={{
