@@ -46,11 +46,65 @@
   opacity: 0;
 }
 
+.slow-load > div {
+  transition: ease 0.2s;
+}
+
+.slow-load:hover > div {
+  transform: scale(1.03);
+  transition: 0.2s ease-in;
+}
+
+.categories {
+  transition: 0.3s;
+}
+
+.categories:hover {
+  font-size: 23px;
+  color: #6a93cb;
+  transition: 0.3s;
+}
+
+.active > .navbar-links {
+  color: #6a93cb;
+}
+
+.active > .navbar-links-icon {
+  color: #6a93cb;
+}
+
+.navbar-link:hover > .navbar-links {
+  color: #6a93cb;
+}
+
+.navbar-link:hover > .navbar-links-icon {
+  color: #6a93cb;
+}
+
+.login-box {
+  animation-name: login-pop-up;
+  animation-duration: 0.7s;
+  animation-delay: 0.4s;
+  animation-fill-mode: forwards;
+  opacity: 0;
+}
+
+@keyframes login-pop-up {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
 @keyframes hide-nav-bar {
   to {
     transform: translateY(-60px);
   }
 }
+
 @keyframes show-nav-bar {
   from {
     transform: translateY(-60px);
@@ -60,6 +114,7 @@
     transform: translateY(0);
   }
 }
+
 @keyframes slow-load {
   from {
     transform: translateX(-200px);

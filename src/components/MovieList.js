@@ -89,7 +89,7 @@ const MovieList = (props) => {
       <div className="movie-list">
         {movies?.map((movie, index) => (
           //handles the slow loading of a list
-          <div style={{animationDelay: index < 24 ? index * 0.02 + 's' : 0.02}} className="slow-load">
+          <div style={{animationDelay: index < 25 ? index * 0.03 + 's' : 0.02}} className="slow-load">
             <MovieCard
               movieTitle={movie.title}
               movieYear={movie.year}
