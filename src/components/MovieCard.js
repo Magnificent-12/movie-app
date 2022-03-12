@@ -19,16 +19,31 @@ export const MovieCard = (props) => {
     setExpanded(!expanded);
   };
   return (
-    <Card sx={{maxWidth: 345, margin: '1px'}}>
+    <Card
+      sx={{
+        maxWidth: 250,
+        margin: '20px',
+        background: 'linear-gradient(315deg, #6a93cb 0% , #a4bfef 74%)',
+        borderRadius: '15px',
+        boxShadow: 'black 15px 15px 10px',
+      }}
+    >
       <CardHeader
         title={props.movieTitle + ' ' + props.movieYear}
         subheader={props.movieGenre}
-        sx={{height: '70px', alignItems: 'start', marginBottom: '20px'}}
+        sx={{
+          height: '70px',
+          alignItems: 'start',
+          marginBottom: '20px',
+          fontSize: '10px',
+          '& .MuiCardHeader-title': {fontSize: '1.25rem'},
+          '& .MuiCardHeader-subheader': {fontSize: '0.95rem'},
+        }}
       />
       <CardMedia
         onError={() => setPoster('https://applified.in/jalaram-marketing/admin_crm/img/noimg.jpg')}
         component="img"
-        height="300"
+        height="200"
         image={poster}
         alt={props.movieTitle}
         sx={{objectFit: 'contain'}}

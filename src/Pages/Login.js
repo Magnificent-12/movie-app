@@ -34,16 +34,23 @@ const Login = () => {
         left: '50%',
         top: '50%',
         WebkitTransform: 'translate(-50%, -50%)',
-        width: 500,
+        width: 400,
+        height: 400,
         maxWidth: '100%',
         maxHeight: '100%',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
+        backgroundColor: '#1f222a',
+        background: 'linear-gradient(140deg, #1f222a 0%, #4b5264 74%)',
+        borderRadius: '30px',
+        boxSizing: 'border-box',
+        boxShadow: '-6px -6px 10px black',
       }}
+      className="login-box"
     >
-      <Typography variant="h4" sx={{marginBottom: '20px', color: 'white'}}>
+      <Typography variant="h4" sx={{marginBottom: '60px', color: 'white'}}>
         Please log in
       </Typography>
       <TextField
@@ -52,10 +59,10 @@ const Login = () => {
         value={email}
         onChange={handleChange}
         onKeyPress={handleKeyPress}
-        variant="outlined"
-        sx={{width: '60%', '& .MuiInputLabel-root': {color: 'white'}, '& fieldset': {borderColor: 'white'}, '& input': {color: 'white'}}}
+        variant="filled"
+        sx={{width: '80%', '& .MuiInputLabel-root': {color: 'white'}, '& fieldset': {borderColor: 'white'}, '& input': {color: 'white'}}}
       />
-      <Button variant="contained" size="medium" sx={{width: '60%', marginTop: '10px'}} onClick={handleClick}>
+      <Button variant="contained" size="medium" sx={{width: '80%', marginTop: '30px', mb: '30px'}} onClick={handleClick}>
         Log in
       </Button>
     </Box>
