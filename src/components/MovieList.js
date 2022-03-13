@@ -1,5 +1,6 @@
 import {useState, useEffect} from 'react';
 import {useSelector} from 'react-redux';
+import {toast} from 'react-toastify';
 import mockdata from '../mockdata.json';
 import {MovieCard} from './MovieCard';
 import {Sort} from './Sort';
@@ -36,7 +37,9 @@ const MovieList = (props) => {
         setFavorites([movie, ...favorites]);
       }
     } else {
-      alert('You have to be logged in to add to favorites');
+      toast.info('You have to be logged in to add to favorites!', {
+        theme: 'colored',
+      });
     }
   };
   const sortArray = (sortString, arrayToSort) => {
