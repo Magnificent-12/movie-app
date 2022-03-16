@@ -8,15 +8,20 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import {useState} from 'react';
+import {useRef, useState} from 'react';
 import {ExpandMore} from '../Helper_components/ExpandMore';
 
 export const MovieCard = (props) => {
   const [expanded, setExpanded] = useState(false);
-  const [poster, setPoster] = useState(props.moviePoster);
+  const posterContainer = useRef(null);
   const color = props.movieFavorite ? 'red' : 'black';
   const handleExpandClick = () => {
     setExpanded(!expanded);
+  };
+  const setPoster = () => {
+    if (posterContainer.current) {
+      posterContainer.current.setAttribute('src', 'https://applified.in/jalaram-marketing/admin_crm/img/noimg.jpg');
+    }
   };
   return (
     <Card
@@ -41,12 +46,13 @@ export const MovieCard = (props) => {
         }}
       />
       <CardMedia
-        onError={() => setPoster('https://applified.in/jalaram-marketing/admin_crm/img/noimg.jpg')}
+        onError={() => setPoster()}
         component="img"
         height="200"
-        image={poster}
+        image={props.moviePoster}
         alt={props.movieTitle}
         sx={{objectFit: 'contain'}}
+        ref={posterContainer}
       />
       <CardContent sx={{height: '50px'}}>
         <Typography variant="body2" color="text.secondary">
