@@ -89,6 +89,21 @@
   opacity: 0;
 }
 
+.filter{
+  display: flex;
+}
+.filter p{
+  color: white;
+  font-size: larger;
+  margin-left: 50px;
+}
+.filter button{
+  margin-left: 50px;
+}
+.slider-div{
+  margin: 0 auto;
+}
+
 @keyframes login-pop-up {
   from {
     opacity: 0;

@@ -4,12 +4,16 @@ import {toast} from 'react-toastify';
 import mockdata from '../mockdata.json';
 import {MovieCard} from './MovieCard';
 import {Sort} from './Sort';
+import {Filter} from './Filter';
+
+
 
 const MovieList = (props) => {
   const loggedIn = useSelector((state) => state.userStore.loggedIn);
   const user = useSelector((state) => state.userStore.email);
   const [movies, setMovies] = useState([]);
   const [sortString, setSortString] = useState('');
+
   //used for setting favorite movies, if localstorage is empty returns and empty array
   const [favorites, setFavorites] = useState(() => {
     //getting favorites by user email
@@ -22,6 +26,7 @@ const MovieList = (props) => {
   });
   const searchedGenre = props.genre === '' ? undefined : props.genre[0].toUpperCase() + props.genre.slice(1);
   const searchedMovies = props.moviesSearched;
+
 
   const getGenres = (genres) => genres.join(', ');
   const handleSort = (value) => {
@@ -93,11 +98,30 @@ const MovieList = (props) => {
     //Setting user email as the key for favorites
     if (loggedIn) localStorage.setItem(JSON.stringify(user), JSON.stringify(favorites));
   }, [favorites, user, loggedIn]);
+  
+ /* insert useEffect below */
+  const handleFilter = (value, startYear, endYear) => {
+    if (startYear > endYear){
+      alert('Invalid value')
+    } else {
+    if (value.length > 0){ 
+    setMovies(mockdata.movies.filter((movie) => movie.genres.includes(...value) && parseInt(movie.year) >= startYear && 
+    parseInt(movie.year) <= endYear))
+      } else {
+        setMovies(mockdata.movies.filter((movie) => parseInt(movie.year) >= startYear && 
+        parseInt(movie.year) <= endYear))  
+      }
+    } 
+  }
+  
+  
 
   return (
     <div>
       <div>
         <Sort handleSort={handleSort} />
+        <Filter handleFilter={handleFilter}/>
+        
       </div>
       <div className="movie-list">
         {movies?.map((movie, index) => (
