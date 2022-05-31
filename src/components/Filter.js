@@ -54,11 +54,19 @@ export const Filter = (props) => {
   };
 
   
+
+  const cleanFilter = () => {
+    props.handleClearFilter()
+  }
+
+  
   return (
     <div>
       <div className='filter'>
         <p>Filter Movies by Genre/Year:</p>
         <Button sx={{backgroundColor: 'white', color: 'black'}} variant="contained" onClick={handleDrawerOpen}>Filter</Button>
+        <Button variant='contained' sx={{backgroundColor: 'white', color: 'black'}}
+        onClick={cleanFilter}>Clear Filter</Button>
       </div>
       
       <Drawer

@@ -105,14 +105,20 @@ const MovieList = (props) => {
       alert('Invalid value')
     } else {
     if (value.length > 0){ 
-    setMovies(mockdata.movies.filter((movie) => movie.genres.includes(...value) && parseInt(movie.year) >= startYear && 
+    setMovies(prev => prev.filter((movie) => movie.genres.includes(...value) && parseInt(movie.year) >= startYear && 
     parseInt(movie.year) <= endYear))
       } else {
-        setMovies(mockdata.movies.filter((movie) => parseInt(movie.year) >= startYear && 
+        setMovies(prev => prev.filter((movie) => parseInt(movie.year) >= startYear && 
         parseInt(movie.year) <= endYear))  
       }
     } 
   }
+
+  const handleClearFilter = () => {
+    setMovies(mockdata.movies.map((movie) => movie))
+  }
+
+  
   
   
 
@@ -120,7 +126,10 @@ const MovieList = (props) => {
     <div>
       <div>
         <Sort handleSort={handleSort} />
-        <Filter handleFilter={handleFilter}/>
+        <Filter 
+          handleFilter={handleFilter}
+          handleClearFilter={handleClearFilter}  
+          />
         
       </div>
       <div className="movie-list">
