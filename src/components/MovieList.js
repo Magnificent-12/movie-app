@@ -1,15 +1,20 @@
 import {useState, useEffect} from 'react';
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
 import {toast} from 'react-toastify';
 import mockdata from '../mockdata.json';
 import {MovieCard} from './MovieCard';
 import {Sort} from './Sort';
+import {Filter} from './Filter';
+import {filters} from '../redux/redux-reducers/filters';
 
 const MovieList = (props) => {
+  const {filters: filtersStore} = useSelector((state) => state);
+  const dispatch = useDispatch();
   const loggedIn = useSelector((state) => state.userStore.loggedIn);
   const user = useSelector((state) => state.userStore.email);
   const [movies, setMovies] = useState([]);
   const [sortString, setSortString] = useState('');
+
   //used for setting favorite movies, if localstorage is empty returns and empty array
   const [favorites, setFavorites] = useState(() => {
     //getting favorites by user email
@@ -94,10 +99,38 @@ const MovieList = (props) => {
     if (loggedIn) localStorage.setItem(JSON.stringify(user), JSON.stringify(favorites));
   }, [favorites, user, loggedIn]);
 
+  /* insert useEffect below */
+  const handleFilter = () => {
+    if (filtersStore.startYear > filtersStore.endYear) {
+      return;
+    } else {
+      if (filtersStore.genres.length > 0) {
+        setMovies(
+          mockdata.movies.filter(
+            (movie) =>
+              movie.genres.includes(...filtersStore.genres) &&
+              parseInt(movie.year) >= filtersStore.startYear &&
+              parseInt(movie.year) <= filtersStore.endYear
+          )
+        );
+      } else {
+        setMovies(
+          mockdata.movies.filter((movie) => parseInt(movie.year) >= filtersStore.startYear && parseInt(movie.year) <= filtersStore.endYear)
+        );
+      }
+    }
+  };
+
+  const handleClearFilter = () => {
+    setMovies(mockdata.movies.map((movie) => movie));
+    dispatch(filters.actions.reset());
+  };
+
   return (
     <div>
       <div>
         <Sort handleSort={handleSort} />
+        <Filter handleFilter={handleFilter} handleClearFilter={handleClearFilter} />
       </div>
       <div className="movie-list">
         {movies?.map((movie, index) => (

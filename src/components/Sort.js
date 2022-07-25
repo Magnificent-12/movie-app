@@ -1,6 +1,8 @@
 import {Box, FormControl, InputLabel, MenuItem, Select} from '@mui/material';
 
 export const Sort = (props) => {
+  const arrows = ['⇧', '⇩'];
+
   const handleChange = (e) => {
     props.handleSort(e.target.value);
   };
@@ -22,10 +24,10 @@ export const Sort = (props) => {
           Sort by
         </InputLabel>
         <Select labelId="demo-simple-select-label" id="demo-simple-select" label="Sort by" onChange={handleChange} sx={{color: 'white'}}>
-          <MenuItem value={'nameasc'}>name(asc)</MenuItem>
-          <MenuItem value={'namedesc'}>name(desc)</MenuItem>
-          <MenuItem value={'yearasc'}>year(asc)</MenuItem>
-          <MenuItem value={'yeardesc'}>year(desc)</MenuItem>
+          <MenuItem value={'nameasc'}>name({arrows[0]})</MenuItem>
+          <MenuItem value={'namedesc'}>name({arrows[1]})</MenuItem>
+          <MenuItem value={'yearasc'}>year({arrows[0]})</MenuItem>
+          <MenuItem value={'yeardesc'}>year({arrows[1]})</MenuItem>
         </Select>
       </FormControl>
     </Box>
